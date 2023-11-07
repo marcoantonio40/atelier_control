@@ -1,7 +1,6 @@
 package com.project.atelier.model;
 
 import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 import lombok.Data;
@@ -17,6 +16,6 @@ public class DefaultEntity {
     @Id @GeneratedValue(generator="system-uuid")
     @GenericGenerator(name="system-uuid", strategy = "uuid")
     private String id;
-    private Boolean status;
+    private boolean status;
     private String type;
 }

@@ -15,8 +15,8 @@ public class UserResponse implements Serializable {
     public static UserResponse toResponse(User model) {
         return UserResponse.builder()
                 .id(model.getId())
-                .status(model.getStatus())
-                .type(model.getType().toString())
+                .status(model.isStatus())
+                .type(model.getType())
                 .login(model.getLogin())
                 .build();
     }
