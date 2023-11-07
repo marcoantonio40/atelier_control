@@ -1,6 +1,7 @@
 package com.project.atelier.model;
 
 import com.project.atelier.dto.request.LoginRequest;
+import com.project.atelier.dto.request.UserRequest;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -20,14 +21,12 @@ public class User extends DefaultEntity{
     private String login;
     private String password;
 
-    public static User of(LoginRequest request) {
+    public static User toModel(UserRequest request) {
         return User.builder()
                 .login(request.getLogin())
                 .password(request.getPassword())
-                .status("ok")
-                .id("ok")
-                .type("ok")
+                .status(true)
+                .type(request.getType().toString())
                 .build();
     }
-    //TODO ARRUMAR
 }
