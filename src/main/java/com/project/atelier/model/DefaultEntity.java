@@ -2,13 +2,17 @@ package com.project.atelier.model;
 
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
-import lombok.Getter;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
-@Getter
+@NoArgsConstructor
+@Data
+@SuperBuilder
 @MappedSuperclass
 public class DefaultEntity {
     @Id
-    private String id;
+    public String id;
     private String status;
     private String type;
 }
