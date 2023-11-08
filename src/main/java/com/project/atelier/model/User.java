@@ -21,10 +21,10 @@ public class User extends DefaultEntity{
     private String login;
     private String password;
 
-    public static User toModel(UserRequest request) {
+    public static User toModel(UserRequest request, String password) {
         return User.builder()
                 .login(request.getLogin())
-                .password(request.getPassword())
+                .password(password)
                 .status(true)
                 .type(request.getType().toString())
                 .build();

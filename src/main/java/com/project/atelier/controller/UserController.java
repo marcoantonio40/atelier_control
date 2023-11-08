@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.security.NoSuchAlgorithmException;
 
 @RequestMapping(value = "/user", produces = {"application/json"})
 @RestController
@@ -18,7 +19,7 @@ public class UserController {
 
     @PostMapping(path = "/create-user")
     @ResponseBody
-    ResponseEntity<UserResponse> create(@Valid @RequestBody UserRequest request){
+    ResponseEntity<UserResponse> create(@Valid @RequestBody UserRequest request) throws NoSuchAlgorithmException {
         return ResponseEntity.ok(service.save(request));
     }
 
