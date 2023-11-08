@@ -16,11 +16,15 @@ public class UserService implements GenericService<UserRequest, UserResponse> {
 
     @Override
     public UserResponse save(UserRequest request) {
-        return UserResponse.toResponse(repository.save(User.toModel(request)));
+        return this.buildResponse(repository.save(User.toModel(request)));
     }
 
     @Override
     public UserResponse findById(String id) {
-       return repository.findById(id).map(UserResponse::toResponse).orElse(null);
+       return repository.findById(id).map(this::buildResponse).orElse(null);
+    }
+
+    private UserResponse buildResponse(User user){
+        return new UserResponse(user.getId(), user.isStatus(), user.getType(), user.getLogin());
     }
 }
