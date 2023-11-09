@@ -22,7 +22,7 @@ public class LoginController {
 
     @PostMapping(path = "/token")
     ResponseEntity<LoginResponse> login(@Valid @RequestBody LoginRequest request){
-        LoginResponse loginResponse = new LoginResponse("certo!");
+        LoginResponse loginResponse = new LoginResponse(request.getLogin());
 
         return ResponseEntity.ok(loginResponse);
 
