@@ -1,6 +1,7 @@
 package com.project.atelier.controller;
 
 import com.project.atelier.dto.request.LoginRequest;
+import com.project.atelier.dto.response.LoginResponse;
 import com.project.atelier.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,9 +21,11 @@ public class LoginController {
     private UserRepository repository;
 
     @PostMapping(path = "/token")
-    ResponseEntity<String> login(@Valid @RequestBody LoginRequest request){
-        return
-                ResponseEntity.accepted().build();
+    ResponseEntity<LoginResponse> login(@Valid @RequestBody LoginRequest request){
+        LoginResponse loginResponse = new LoginResponse("certo!");
+
+        return ResponseEntity.ok(loginResponse);
+
     }
 
 }
