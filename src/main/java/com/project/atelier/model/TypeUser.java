@@ -4,7 +4,13 @@ import lombok.Getter;
 
 @Getter
 public enum TypeUser {
-    EMPLOYEE,
-    MANAGER,
-    SUPER;
+    EMPLOYEE("employee"),
+    MANAGER("manager"),
+    SUPER("super");
+
+    private String role;
+
+    TypeUser(String role){
+        this.role = role;
+    }
 }

@@ -17,5 +17,5 @@ public class DefaultEntity {
     @GenericGenerator(name="system-uuid", strategy = "uuid")
     private String id;
     private boolean status;
-    private String type;
+    private TypeUser type;
 }
