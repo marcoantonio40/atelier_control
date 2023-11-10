@@ -1,16 +1,18 @@
 package com.project.atelier.controller;
 
+import com.project.atelier.configuration.TokenService;
 import com.project.atelier.dto.request.LoginRequest;
 import com.project.atelier.dto.response.LoginResponse;
-import com.project.atelier.repository.UserRepository;
+import com.project.atelier.model.User;
+import com.project.atelier.service.impl.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.security.NoSuchAlgorithmException;
 
 
 @RequestMapping(value = "/login", produces = {"application/json"})
@@ -18,13 +20,22 @@ import javax.validation.Valid;
 public class LoginController {
 
     @Autowired
-    private UserRepository repository;
+    private AuthenticationManager authenticationManager;
+    @Autowired
+    private UserService service;
+
+    @Autowired
+    private TokenService tokenService;
 
     @PostMapping(path = "/token")
-    ResponseEntity<LoginResponse> login(@Valid @RequestBody LoginRequest request){
-        LoginResponse loginResponse = new LoginResponse("certo!");
+    @ResponseBody
+    ResponseEntity<LoginResponse> login(@Valid @RequestBody LoginRequest request) throws NoSuchAlgorithmException {
+        var usernamePassword = new UsernamePasswordAuthenticationToken(request.getLogin(), request.getPassword());
+        var auth = this.authenticationManager.authenticate(usernamePassword);
 
-        return ResponseEntity.ok(loginResponse);
+        var token = tokenService.generateToken((User) auth.getPrincipal());
+
+        return ResponseEntity.ok().body(new LoginResponse(token));
 
     }
 
