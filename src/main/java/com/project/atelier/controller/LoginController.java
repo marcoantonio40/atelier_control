@@ -29,7 +29,7 @@ public class LoginController {
 
     @PostMapping(path = "/token")
     @ResponseBody
-    ResponseEntity<LoginResponse> login(@Valid @RequestBody LoginRequest request) throws NoSuchAlgorithmException {
+    ResponseEntity<LoginResponse> login(@Valid @RequestBody LoginRequest request) {
         var usernamePassword = new UsernamePasswordAuthenticationToken(request.getLogin(), request.getPassword());
         var auth = this.authenticationManager.authenticate(usernamePassword);
 
