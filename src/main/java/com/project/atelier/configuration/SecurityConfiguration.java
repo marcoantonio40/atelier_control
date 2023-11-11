@@ -28,6 +28,7 @@ public class SecurityConfiguration {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorize ->
                         authorize
+                                .requestMatchers(HttpMethod.OPTIONS, "/login/token").permitAll()
                                 .requestMatchers(HttpMethod.POST, "/login/token").permitAll()
                                 .requestMatchers(HttpMethod.POST, "/user/create-user").hasRole("ADMIN")
                                 .requestMatchers(HttpMethod.GET, "/user/find-by-id/**").hasRole("ADMIN")
