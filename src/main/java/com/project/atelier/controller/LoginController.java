@@ -32,7 +32,6 @@ public class LoginController {
     ResponseEntity<LoginResponse> login(@Valid @RequestBody LoginRequest request) {
         var usernamePassword = new UsernamePasswordAuthenticationToken(request.getLogin(), request.getPassword());
         var auth = this.authenticationManager.authenticate(usernamePassword);
-
         var token = tokenService.generateToken((User) auth.getPrincipal());
 
         return ResponseEntity.ok().body(new LoginResponse(token));
