@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 @RequestMapping(value = "/user", produces = {"application/json"})
 @RestController
@@ -18,14 +19,17 @@ public class UserController {
     private UserService service;
 
     @PostMapping(path = "/create-user")
-    @ResponseBody
     ResponseEntity<UserResponse> create(@Valid @RequestBody UserRequest request) throws NoSuchAlgorithmException {
         return ResponseEntity.ok(service.save(request));
     }
 
     @GetMapping(path = "/find-by-id/{id}")
-    @ResponseBody
     ResponseEntity<UserResponse> findById(@Valid @PathVariable(value = "id") String id ){
         return ResponseEntity.ok(service.findById(id));
+    }
+
+    @GetMapping
+    ResponseEntity<List<UserResponse>> findAll(){
+        return ResponseEntity.ok(service.findAll());
     }
 }
