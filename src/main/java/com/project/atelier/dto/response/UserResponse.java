@@ -1,3 +1,3 @@
 package com.project.atelier.dto.response;
 
-public record UserResponse(String id, boolean status, String type, String login){}
+public record UserResponse(String id, String name, String cpf, String phone, String createdDate){}

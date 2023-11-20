@@ -10,6 +10,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.security.NoSuchAlgorithmException;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class UserService implements GenericService<UserRequest, UserResponse> {
@@ -28,7 +31,14 @@ public class UserService implements GenericService<UserRequest, UserResponse> {
        return repository.findById(id).map(this::buildResponse).orElse(null);
     }
 
+    @Override
+    public List<UserResponse> findAll() {
+        return repository.findAll()
+                .stream().map(this::buildResponse)
+                .collect(Collectors.toList());
+    }
+
     private UserResponse buildResponse(User user){
-        return new UserResponse(user.getId(), user.isStatus(), user.getType().getRole(), user.getLogin());
+        return new UserResponse(user.getId(), user.getName(), user.getCpf(), user.getPhone(), user.getCreatedDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
     }
 }

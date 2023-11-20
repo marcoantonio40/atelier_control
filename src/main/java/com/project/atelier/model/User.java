@@ -1,6 +1,5 @@
 package com.project.atelier.model;
 
-import com.project.atelier.dto.request.LoginRequest;
 import com.project.atelier.dto.request.UserRequest;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -14,6 +13,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
 
@@ -28,7 +28,11 @@ public class User extends DefaultEntity implements UserDetails {
 
     @Column(unique = true)
     private String login;
+
     private String password;
+
+    @Column(unique = true)
+    private String cpf;
 
     public static User toModel(UserRequest request, String password) {
         return User.builder()
@@ -36,6 +40,11 @@ public class User extends DefaultEntity implements UserDetails {
                 .password(password)
                 .status(true)
                 .type(request.getType())
+                .phone(request.getPhone())
+                .cpf(request.getCpf())
+                .name(request.getName())
+                .createdDate(LocalDateTime.now())
+                .updateDate(LocalDateTime.now())
                 .build();
     }
 
