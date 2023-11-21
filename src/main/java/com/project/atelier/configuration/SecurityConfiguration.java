@@ -30,6 +30,7 @@ public class SecurityConfiguration {
                         authorize
                                 .requestMatchers(HttpMethod.OPTIONS, "/login/token").permitAll()
                                 .requestMatchers(HttpMethod.POST, "/login/token").permitAll()
+                                .requestMatchers(HttpMethod.GET, "/user/find-all").authenticated()
                                 .requestMatchers(HttpMethod.POST, "/user/create-user").hasRole("ADMIN")
                                 .requestMatchers(HttpMethod.GET, "/user/find-by-id/**").hasRole("ADMIN")
                                 .anyRequest().authenticated())
