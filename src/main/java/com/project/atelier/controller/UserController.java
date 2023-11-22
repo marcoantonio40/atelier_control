@@ -28,7 +28,7 @@ public class UserController {
         return ResponseEntity.ok(service.findById(id));
     }
 
-    @GetMapping
+    @GetMapping(path = "/find-all")
     ResponseEntity<List<UserResponse>> findAll(){
         return ResponseEntity.ok(service.findAll());
     }
