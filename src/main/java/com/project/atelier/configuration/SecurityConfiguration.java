@@ -30,8 +30,9 @@ public class SecurityConfiguration {
                         authorize
                                 .requestMatchers(HttpMethod.OPTIONS, "/login/token").permitAll()
                                 .requestMatchers(HttpMethod.POST, "/login/token").permitAll()
-                                .requestMatchers(HttpMethod.POST, "/user/create-user").hasRole("ADMIN")
-                                .requestMatchers(HttpMethod.GET, "/user/find-by-id/**").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.GET, "/user/find-all").hasRole("ADMIN")
+//                                .requestMatchers(HttpMethod.POST, "/user/create-user").hasRole("ADMIN")
+//                                .requestMatchers(HttpMethod.GET, "/user/find-by-id/**").hasRole("ADMIN")
                                 .anyRequest().authenticated())
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
