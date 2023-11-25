@@ -39,7 +39,7 @@ public class User extends DefaultEntity implements UserDetails {
                 .login(request.getLogin())
                 .password(password)
                 .status(true)
-                .type(request.getType())
+                .type(TypeUser.valueOf(request.getType()))
                 .phone(request.getPhone())
                 .cpf(request.getCpf())
                 .name(request.getName())

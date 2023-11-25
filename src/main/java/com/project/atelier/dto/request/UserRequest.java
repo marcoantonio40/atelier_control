@@ -10,21 +10,16 @@ import javax.validation.constraints.Size;
 
 @Getter
 public class UserRequest {
-    private String id;
 
     @NotNull
     @Email
     private String login;
 
     @NotNull
-    @Size(min = 8, max = 10)
-    private String password;
-
-    @NotNull
     private String status;
 
     @NotBlank
-    private TypeUser type;
+    private String type;
 
     @NotNull
     @Size(min = 8, max = 100)
