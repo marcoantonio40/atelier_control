@@ -22,7 +22,7 @@ public class UserService implements GenericService<UserRequest, UserResponse> {
 
     @Override
     public UserResponse save(UserRequest request) throws NoSuchAlgorithmException {
-        String encryptedPassword = new BCryptPasswordEncoder().encode(request.getPassword());
+        String encryptedPassword = new BCryptPasswordEncoder().encode("12345678");
         return this.buildResponse(repository.save(User.toModel(request, encryptedPassword)));
     }
 
