@@ -48,6 +48,21 @@ public class User extends DefaultEntity implements UserDetails {
                 .build();
     }
 
+    public static User toModelToUpdate(UserRequest request, String id, String password) {
+        return User.builder()
+                .login(request.getLogin())
+                .status(true)
+                .type(TypeUser.valueOf(request.getType()))
+                .phone(request.getPhone())
+                .cpf(request.getCpf())
+                .name(request.getName())
+                .createdDate(LocalDateTime.now())
+                .updateDate(LocalDateTime.now())
+                .id(id)
+                .password(password)
+                .build();
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         if(this.getType() == TypeUser.SUPER){

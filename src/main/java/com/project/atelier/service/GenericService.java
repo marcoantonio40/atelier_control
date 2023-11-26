@@ -12,4 +12,6 @@ public interface GenericService<R, T> {
     T findById(String id);
 
     List<T> findAll();
+
+    T update(R request, String id);
 }

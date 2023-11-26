@@ -38,7 +38,14 @@ public class UserService implements GenericService<UserRequest, UserResponse> {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public UserResponse update(UserRequest request, String id) {
+        String encryptedPassword = new BCryptPasswordEncoder().encode("12345678");
+        String password = this.repository.findById(id).map(User::getPassword).orElse(encryptedPassword);
+        return this.buildResponse(repository.save(User.toModelToUpdate(request, id, password)));
+    }
+
     private UserResponse buildResponse(User user){
-        return new UserResponse(user.getId(), user.getName(), user.getCpf(), user.getPhone(), user.getCreatedDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+        return new UserResponse(user.getId(), user.getName(), user.getCpf(), user.getPhone(), user.getCreatedDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")), user.getLogin(), user.getType().toString());
     }
 }
