@@ -32,4 +32,11 @@ public class UserController {
     ResponseEntity<List<UserResponse>> findAll(){
         return ResponseEntity.ok(service.findAll());
     }
+
+    @PutMapping(path = "/update-user/{id}")
+    ResponseEntity<UserResponse> update(@PathVariable(value = "id") String id,
+                                        @Valid @RequestBody UserRequest request)  {
+        return ResponseEntity.ok(service.update(request, id));
+    }
+
 }
