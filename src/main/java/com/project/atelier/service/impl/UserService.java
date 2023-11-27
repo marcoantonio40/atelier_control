@@ -45,6 +45,11 @@ public class UserService implements GenericService<UserRequest, UserResponse> {
         return this.buildResponse(repository.save(User.toModelToUpdate(request, id, password)));
     }
 
+    @Override
+    public void delete(String id) {
+        repository.deleteById(id);
+    }
+
     private UserResponse buildResponse(User user){
         return new UserResponse(user.getId(), user.getName(), user.getCpf(), user.getPhone(), user.getCreatedDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")), user.getLogin(), user.getType().toString());
     }
