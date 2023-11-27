@@ -14,4 +14,6 @@ public interface GenericService<R, T> {
     List<T> findAll();
 
     T update(R request, String id);
+
+    void delete(String id);
 }

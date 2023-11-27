@@ -4,6 +4,7 @@ import com.project.atelier.dto.request.UserRequest;
 import com.project.atelier.dto.response.UserResponse;
 import com.project.atelier.service.impl.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,6 +38,12 @@ public class UserController {
     ResponseEntity<UserResponse> update(@PathVariable(value = "id") String id,
                                         @Valid @RequestBody UserRequest request)  {
         return ResponseEntity.ok(service.update(request, id));
+    }
+
+    @DeleteMapping(path = "/delete-user/{id}")
+    ResponseEntity delete(@PathVariable(value = "id") String id)  {
+        service.delete(id);
+        return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
 
 }
