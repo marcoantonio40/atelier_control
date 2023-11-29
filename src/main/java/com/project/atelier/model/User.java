@@ -34,6 +34,8 @@ public class User extends DefaultEntity implements UserDetails {
     @Column(unique = true)
     private String cpf;
 
+    private TypeUser type;
+
     public static User toModel(UserRequest request, String password) {
         return User.builder()
                 .login(request.getLogin())
