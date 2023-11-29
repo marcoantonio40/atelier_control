@@ -23,8 +23,6 @@ public class DefaultEntity {
 
     private boolean status;
 
-    private TypeUser type;
-
     private String name;
 
     private String phone;

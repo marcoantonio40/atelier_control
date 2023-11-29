@@ -1,12 +1,13 @@
 package com.project.atelier.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
+
+import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
@@ -16,6 +17,17 @@ import lombok.experimental.SuperBuilder;
 @Entity
 @Table(name = "T_CUSTOMER")
 public class Customer extends DefaultEntity {
+
+    private String email;
+
+    @Column(unique = true)
+    private String cpfOrCnpj;
+
+    private LocalDateTime birthDay;
+
+    @OneToOne
+    @JoinColumn(name = "id")
+    private DomainAddress address;
 
 
 }
