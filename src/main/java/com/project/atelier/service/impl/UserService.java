@@ -4,6 +4,7 @@ import com.project.atelier.dto.request.UserRequest;
 import com.project.atelier.dto.response.UserResponse;
 import com.project.atelier.model.User;
 import com.project.atelier.repository.UserRepository;
+import com.project.atelier.service.AbstractService;
 import com.project.atelier.service.GenericService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -15,7 +16,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class UserService implements GenericService<UserRequest, UserResponse> {
+public class UserService extends AbstractService<UserResponse, User> implements GenericService<UserRequest, UserResponse> {
 
     @Autowired
     UserRepository repository;
@@ -50,7 +51,8 @@ public class UserService implements GenericService<UserRequest, UserResponse> {
         repository.deleteById(id);
     }
 
-    private UserResponse buildResponse(User user){
+    @Override
+    protected UserResponse buildResponse(User user){
         return new UserResponse(user.getId(), user.getName(), user.getCpf(), user.getPhone(), user.getCreatedDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")), user.getLogin(), user.getType().toString());
     }
 }
