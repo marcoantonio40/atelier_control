@@ -3,6 +3,7 @@ package com.project.atelier.service.impl;
 import com.project.atelier.dto.request.CustomerRequest;
 import com.project.atelier.dto.response.CustomerResponse;
 import com.project.atelier.model.Customer;
+import com.project.atelier.model.User;
 import com.project.atelier.repository.CustomerRepository;
 import com.project.atelier.service.AbstractService;
 import com.project.atelier.service.GenericService;
@@ -20,8 +21,8 @@ public class CustomerService extends AbstractService<CustomerResponse, Customer>
     CustomerRepository repository;
 
     @Override
-    public CustomerResponse save(CustomerRequest request) throws NoSuchAlgorithmException {
-        return null;
+    public CustomerResponse save(CustomerRequest request) {
+        return this.buildResponse(repository.save(Customer.toModel(request)));
     }
 
     @Override
