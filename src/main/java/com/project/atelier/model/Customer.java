@@ -45,4 +45,19 @@ public class Customer extends DefaultEntity {
                 .address(DomainAddress.toModel(request.getAddress()))
                 .build();
     }
+
+    public static Customer toModelToUpdate(CustomerRequest request, String id) {
+        return Customer
+                .builder()
+                .id(id)
+                .email(request.getEmail())
+                .cpfOrCnpj(request.getCpfOrCnpj())
+                .name(request.getName())
+                .phone(request.getPhone())
+                .status(true)
+                .createdDate(LocalDateTime.now())
+                .updateDate(LocalDateTime.now())
+                .address(DomainAddress.toModel(request.getAddress()))
+                .build();
+    }
 }
