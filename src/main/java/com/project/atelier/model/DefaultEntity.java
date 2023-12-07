@@ -16,16 +16,12 @@ import java.time.LocalDateTime;
 @Data
 @SuperBuilder
 @MappedSuperclass
-public class DefaultEntity {
+public class DefaultEntity extends DefaultInfoEntity{
     @Id @GeneratedValue(generator="system-uuid")
     @GenericGenerator(name="system-uuid", strategy = "uuid")
     private String id;
 
     private boolean status;
-
-    private String name;
-
-    private String phone;
 
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime createdDate;
