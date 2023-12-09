@@ -37,3 +37,20 @@ out/
 *.iml
 *.ipr
 *.iws
+
+##############################
+## Terraform
+##############################
+.terraform/
+./terraform/
+terraform/
+# State files
+*.tfstate
+.tfstate.
+
+# Crash log files
+*.log
+
+# Sensitive data
+*.tfvars
+
