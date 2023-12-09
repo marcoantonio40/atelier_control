@@ -41,9 +41,9 @@ out/
 ##############################
 ## Terraform
 ##############################
-.terraform/
-./terraform/
-terraform/
+.terraform/terraform/
+./terraform/terraform/
+terraform/terraform/
 # State files
 *.tfstate
 .tfstate.
