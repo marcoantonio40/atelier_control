@@ -19,7 +19,7 @@ resource "aws_security_group_rule" "atelier_control_security_group_rule_ssh_in" 
   security_group_id = aws_security_group.atelier_control_security_group.id
   to_port = 22
   type = "ingress"
-  idr_blocks = ["0.0.0.0/0"]
+  cidr_blocks = ["0.0.0.0/0"]
 }
 
 resource "aws_security_group_rule" "atelier_control_security_group_rule_http_in" {
@@ -36,17 +36,3 @@ resource "aws_key_pair" "atelier_control_key" {
   public_key = file("~/.ssh/atelier_key.pub")
 }
 
-resource "aws_instance" "atelier_control_ec2" {
-  instance_type = "t2.micro"
-  key_name = aws_key_pair.atelier_control_key.id
-  vpc_security_group_ids = [aws_security_group.atelier_control_security_group.id]
-  subnet_id = aws_subnet.atelier_control_subnet.id
-
-  root_block_device {
-    volume_size = 25
-  }
-
-  tags = {
-    Name = "atelier_control_ec2"
-  }
-}
