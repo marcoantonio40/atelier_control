@@ -3,7 +3,7 @@ version: '3'
 services:
   atelier:
     container_name: atelier-api
-    image: atelier-app:latest
+    image: marcoudi40/atelier-app1:latest
     ports:
       - "8080:8080"
     environment:
