@@ -53,6 +53,8 @@ resource "aws_instance" "atelier_control_ec2" {
 
   ami = data.aws_ami.atelier_control_ami.id
 
+  user_data = file("userdata.tpl")
+
   root_block_device {
     volume_size = 25
   }
