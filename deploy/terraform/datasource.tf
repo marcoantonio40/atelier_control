@@ -1,6 +1,6 @@
 data "aws_ami" "atelier_control_ami" {
   most_recent = true
-  owners = ["137112412989"]
+  owners      = ["137112412989"]
 
   filter {
     name   = "name"
