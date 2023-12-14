@@ -7,7 +7,7 @@ terraform {
 }
 
 provider "aws" {
-  region = "us-east-2"
+  region                   = "us-east-2"
   shared_credentials_files = ["~/.aws/credentials"]
-  profile = "atelier-control-api"
+  profile                  = "atelier-control-api"
 }
