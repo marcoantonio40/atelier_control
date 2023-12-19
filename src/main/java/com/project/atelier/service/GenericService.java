@@ -1,7 +1,5 @@
 package com.project.atelier.service;
 
-import com.project.atelier.dto.response.UserResponse;
-
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 

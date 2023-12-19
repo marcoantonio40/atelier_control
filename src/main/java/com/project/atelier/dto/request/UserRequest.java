@@ -1,6 +1,5 @@
 package com.project.atelier.dto.request;
 
-import com.project.atelier.model.TypeUser;
 import lombok.Getter;
 
 import javax.validation.constraints.Email;
