@@ -1,4 +1,4 @@
-package com.project.atelier.model;
+package com.project.atelier.model.enums;
 
 import lombok.Getter;
 
@@ -8,7 +8,7 @@ public enum TypeUser {
     MANAGER("manager"),
     SUPER("super");
 
-    private String role;
+    private final String role;
 
     TypeUser(String role){
         this.role = role;

@@ -1,4 +1,4 @@
-package com.project.atelier.model;
+package com.project.atelier.model.generics;
 
 import jakarta.persistence.MappedSuperclass;
 import lombok.Data;

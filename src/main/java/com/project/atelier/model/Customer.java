@@ -1,6 +1,7 @@
 package com.project.atelier.model;
 
 import com.project.atelier.dto.request.CustomerRequest;
+import com.project.atelier.model.generics.DefaultEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

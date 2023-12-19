@@ -1,6 +1,7 @@
 package com.project.atelier.model;
 
 import com.project.atelier.dto.request.AddressRequest;
+import com.project.atelier.model.generics.DefaultEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
