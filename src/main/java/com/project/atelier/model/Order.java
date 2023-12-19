@@ -1,6 +1,8 @@
 package com.project.atelier.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.project.atelier.model.enums.TypePayment;
+import com.project.atelier.model.generics.DefaultEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.Data;

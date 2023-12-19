@@ -1,6 +1,8 @@
 package com.project.atelier.model;
 
 import com.project.atelier.dto.request.UserRequest;
+import com.project.atelier.model.enums.TypeUser;
+import com.project.atelier.model.generics.DefaultEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;

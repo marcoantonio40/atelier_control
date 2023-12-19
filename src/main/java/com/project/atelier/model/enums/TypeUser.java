@@ -1,4 +1,4 @@
-package com.project.atelier.model;
+package com.project.atelier.model.enums;
 
 import lombok.Getter;
 

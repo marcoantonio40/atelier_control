@@ -1,4 +1,4 @@
-package com.project.atelier.model;
+package com.project.atelier.model.generics;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.GeneratedValue;
@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 @Data
 @SuperBuilder
 @MappedSuperclass
-public class DefaultEntity extends DefaultInfoEntity{
+public class DefaultEntity extends DefaultInfoEntity {
     @Id @GeneratedValue(generator="system-uuid")
     @GenericGenerator(name="system-uuid", strategy = "uuid")
     private String id;
