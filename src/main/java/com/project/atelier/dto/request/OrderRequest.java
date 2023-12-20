@@ -25,4 +25,6 @@ public class OrderRequest {
     @NotNull
     private int installments;
 
+    private String deliverDate;
+
 }
