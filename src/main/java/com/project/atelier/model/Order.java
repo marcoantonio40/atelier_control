@@ -1,10 +1,10 @@
 package com.project.atelier.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.project.atelier.dto.request.OrderRequest;
 import com.project.atelier.model.enums.TypePayment;
 import com.project.atelier.model.generics.DefaultEntity;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -29,16 +29,32 @@ public class Order extends DefaultEntity {
 
     private boolean isPaid;
 
-    private String userId;
+    @OneToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User userId;
 
-    private String customerId;
+    @OneToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "customer_id", referencedColumnName = "id")
+    private Customer customerId;
 
     private int installments;
 
 
-
-
-
-
-
+    public static Order toModel(OrderRequest request) {
+        return Order.builder()
+                .value(request.getValue())
+                .deliverDate(LocalDateTime.parse(request.getDeliverDate()))
+                .typePayment(TypePayment.valueOf(request.getTypePayment()))
+                .isPaid(request.isPaid())
+                .userId(User
+                        .builder()
+                        .id(request.getUserId())
+                        .build())
+                .customerId(Customer
+                        .builder()
+                        .id(request.getCustomerId())
+                        .build())
+                .installments(request.getInstallments())
+                .build();
+    }
 }
