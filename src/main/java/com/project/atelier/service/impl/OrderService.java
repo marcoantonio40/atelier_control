@@ -7,7 +7,6 @@ import com.project.atelier.service.AbstractService;
 import com.project.atelier.service.GenericService;
 import org.springframework.stereotype.Service;
 
-import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 @Service
@@ -20,7 +19,7 @@ public class OrderService extends AbstractService<OrderResponse, Order> implemen
     }
 
     @Override
-    public OrderResponse save(OrderRequest request) throws NoSuchAlgorithmException {
+    public OrderResponse save(OrderRequest request){
         return null;
     }
 
