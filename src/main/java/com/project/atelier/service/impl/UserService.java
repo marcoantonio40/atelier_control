@@ -29,7 +29,7 @@ public class UserService extends AbstractService<UserResponse, User> implements 
 
     @Override
     public UserResponse findById(String id) {
-       return repository.findById(id).map(this::buildResponse).orElse(null);
+        return repository.findById(id).map(this::buildResponse).orElse(null);
     }
 
     @Override
@@ -52,7 +52,7 @@ public class UserService extends AbstractService<UserResponse, User> implements 
     }
 
     @Override
-    protected UserResponse buildResponse(User user){
+    protected UserResponse buildResponse(User user) {
         return new UserResponse(user.getId(), user.getName(), user.getCpf(), user.getPhone(), user.getCreatedDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")), user.getLogin(), user.getType().toString());
     }
 }

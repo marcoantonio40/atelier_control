@@ -21,7 +21,7 @@ public class OrderService extends AbstractService<OrderResponse, Order> implemen
     private OrderRepository repository;
 
     @Override
-    public OrderResponse save(OrderRequest request){
+    public OrderResponse save(OrderRequest request) {
         return this.buildResponse(repository.save(Order.toModel(request)));
     }
 
