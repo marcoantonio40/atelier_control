@@ -68,19 +68,19 @@ public class User extends DefaultEntity implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        if(this.getType() == TypeUser.SUPER){
+        if (this.getType() == TypeUser.SUPER) {
             return List.of(
                     new SimpleGrantedAuthority("ROLE_ADMIN"),
                     new SimpleGrantedAuthority("ROLE_STAFF"),
                     new SimpleGrantedAuthority("ROLE_USER")
             );
-        }else if (this.getType() == TypeUser.MANAGER) {
+        } else if (this.getType() == TypeUser.MANAGER) {
             return List.of(
                     new SimpleGrantedAuthority("ROLE_STAFF"),
                     new SimpleGrantedAuthority("ROLE_USER")
             );
         } else {
-          return List.of(new SimpleGrantedAuthority("ROLE_USER"));
+            return List.of(new SimpleGrantedAuthority("ROLE_USER"));
         }
     }
 

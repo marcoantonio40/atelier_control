@@ -22,7 +22,7 @@ public class Order extends DefaultEntity {
 
     private Double value;
 
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime deliverDate;
 
     private TypePayment typePayment;
