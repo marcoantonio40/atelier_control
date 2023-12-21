@@ -8,7 +8,7 @@ resource "aws_vpc" "atelier_control_vpc" {
   }
 }
 
-resource "aws_subnet" "atelier_control_subnet" {
+resource "aws_subnet" "atelier_control_subnet_pub" {
   vpc_id                  = aws_vpc.atelier_control_vpc.id
   cidr_block              = "10.0.1.0/24"
   availability_zone       = "us-east-2a"
@@ -27,32 +27,31 @@ resource "aws_internet_gateway" "atelier_control_internet_gateway" {
   }
 }
 
-resource "aws_route_table" "atelier_control_route_table" {
+resource "aws_route_table" "atelier_control_route_table_pub" {
   vpc_id = aws_vpc.atelier_control_vpc.id
 
   tags = {
-    Name = "atelier_control_route_table"
+    Name = "atelier_control_route_table_pub"
   }
 }
 
 resource "aws_route" "atelier_control_route" {
-  route_table_id         = aws_route_table.atelier_control_route_table.id
+  route_table_id         = aws_route_table.atelier_control_route_table_pub.id
   destination_cidr_block = "0.0.0.0/0"
   gateway_id             = aws_internet_gateway.atelier_control_internet_gateway.id
 }
 
 resource "aws_route_table_association" "atelier_control_route_table_association" {
-  route_table_id = aws_route_table.atelier_control_route_table.id
-  subnet_id      = aws_subnet.atelier_control_subnet.id
+  route_table_id = aws_route_table.atelier_control_route_table_pub.id
+  subnet_id      = aws_subnet.atelier_control_subnet_pub.id
 }
 
 resource "aws_instance" "atelier_control_ec2" {
   instance_type          = "t2.micro"
+  ami                    = data.aws_ami.atelier_control_ami.id
   key_name               = aws_key_pair.atelier_control_key.id
   vpc_security_group_ids = [aws_security_group.atelier_control_security_group.id]
-  subnet_id              = aws_subnet.atelier_control_subnet.id
-
-  ami = data.aws_ami.atelier_control_ami.id
+  subnet_id              = aws_subnet.atelier_control_subnet_pub.id
 
   user_data = file("userdata.tpl")
 
