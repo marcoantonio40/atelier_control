@@ -11,6 +11,4 @@ services:
       JAVA_TOOL_OPTIONS: "-XX:MaxDirectMemorySize=8M \
         -XX:MaxMetaspaceSize=64M \ 
         -XX:ReservedCodeCacheSize=16M \
-        -Xss2048M"
-      INFA_JAVA_OPTS: "-Xmx2048M \
-        -XX:GCTimeRatio=9"
+        -Xss512K"
