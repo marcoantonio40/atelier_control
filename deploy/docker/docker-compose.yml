@@ -12,3 +12,5 @@ services:
         -XX:MaxMetaspaceSize=64M \ 
         -XX:ReservedCodeCacheSize=16M \
         -Xss512K"
+
+#      Preciso resolver a memória do container
