@@ -13,4 +13,4 @@ services:
         -XX:ReservedCodeCacheSize=16M \
         -Xss512K"
 
-#      Preciso resolver a memória do container
+#      Preciso resolver a memória do container, vou subir e testar
