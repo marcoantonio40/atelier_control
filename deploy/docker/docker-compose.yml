@@ -11,4 +11,4 @@ services:
       JAVA_TOOL_OPTIONS: "-XX:MaxDirectMemorySize=8M \
         -XX:MaxMetaspaceSize=64M \ 
         -XX:ReservedCodeCacheSize=16M \
-        -Xss512K"
+        -Xss512M"
