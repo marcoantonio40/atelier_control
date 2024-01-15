@@ -8,7 +8,16 @@ services:
       - "8080:8080"
     environment:
       TZ: "America/Sao_Paulo"
-      JAVA_TOOL_OPTIONS: "-XX:MaxDirectMemorySize=8M \
-        -XX:MaxMetaspaceSize=64M \ 
-        -XX:ReservedCodeCacheSize=16M \
-        -Xss512M"
+    networks:
+        - docker-network
+    deploy:
+      resources:
+        limits:
+          memory: 700M
+        reservations:
+          memory: 700M
+    restart: always
+
+networks:
+  docker-network:
+    driver: bridge
