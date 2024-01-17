@@ -9,4 +9,3 @@ data "aws_ami" "atelier_control_ami" {
 }
 
 
-#preciso entender porque está sendp executado dentro do EC2 mas não consigo chamar de fora
