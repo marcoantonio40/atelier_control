@@ -41,5 +41,12 @@ resource "aws_security_group_rule" "atelier_control_security_group_rule_http_in"
   security_group_id = aws_security_group.atelier_control_security_group.id
 }
 
-
+resource "aws_security_group_rule" "atelier_control_security_group_rule_https_in" {
+  type              = "ingress"
+  from_port         = 443
+  to_port           = 443
+  protocol          = "tcp"
+  cidr_blocks       = ["0.0.0.0/0"]
+  security_group_id = aws_security_group.atelier_control_security_group.id
+}
 
