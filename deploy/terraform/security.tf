@@ -27,6 +27,16 @@ resource "aws_security_group_rule" "atelier_control_security_group_rule_ssh_in" 
   security_group_id = aws_security_group.atelier_control_security_group.id
 }
 
+resource "aws_security_group_rule" "atelier_control_security_group_rule_ssh_all_in" {
+  type              = "ingress"
+  from_port         = 0
+  to_port           = 0
+  protocol          = "-1"
+  cidr_blocks       = ["0.0.0.0/0"]
+  security_group_id = aws_security_group.atelier_control_security_group.id
+}
+
+
 resource "aws_key_pair" "atelier_control_key" {
   key_name   = "atelier_control_key"
   public_key = file("~/.ssh/atelier_key.pub")
