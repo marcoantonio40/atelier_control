@@ -60,3 +60,5 @@ resource "aws_security_group_rule" "atelier_control_security_group_rule_https_in
   security_group_id = aws_security_group.atelier_control_security_group.id
 }
 
+#Eu preciso criar um security group para aceitar chamadas para a porta 8080
+#Também preciso alterar o WebConfig.java para permitir chamadas externas do destino do frontEnd
