@@ -34,8 +34,8 @@ resource "aws_key_pair" "atelier_control_key" {
 
 resource "aws_security_group_rule" "atelier_control_security_group_rule_http_in" {
   type              = "ingress"
-  from_port         = 8080
-  to_port           = 8080
+  from_port         = 8081
+  to_port           = 8081
   protocol          = "tcp"
   cidr_blocks       = ["0.0.0.0/0"]
   security_group_id = aws_security_group.atelier_control_security_group.id
